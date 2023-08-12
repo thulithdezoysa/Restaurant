@@ -1,0 +1,114 @@
+/* Defualt */
+body {
+    margin: 0;
+    font-family: Smythe, 'cursive';
+    
+}
+
+h1,h2,h3,h4{
+    padding: 0;
+    margin: 0;
+}
+section{
+    padding: 0 46px;
+    
+}
+
+/* Layout */
+
+
+header{
+    background: url(./header.jfif) no-repeat;
+    object-fit: cover;
+    height: 167px;
+    width: 100vw;
+    background-position: right 60% top 70%; 
+    color: white;
+    margin-bottom: 50px;
+} 
+.menu-container{
+    display: flex;
+    flex-direction: column;
+    
+}
+.content-container{
+    display: flex;
+}
+/* Typography */
+
+#bold{
+    font-weight: bold;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 39px;
+    font-weight: 400;
+    padding: 46px 0 10px 46px;
+}
+header p{
+    margin: 0;
+    padding-left: 46px;
+}
+
+.text-container h3,p,h4{
+    margin: 1px;
+    
+}
+#order-item-container h3{
+    text-align: center;
+}
+/* Dividers */
+ 
+hr {
+    border: 1px solid #D2D2D2;
+    margin: 20px 0px;
+}
+#menu-divider{
+    border: 1px solid black;
+}
+
+/* Elements */
+
+#emoji{      
+    font-size: 80px; 
+    margin-left:  -20px;  
+}
+
+.order-items{
+    display: flex;
+    
+}
+#order-price {
+    margin-left: auto;
+    align-self: center;
+}
+
+/* Buttons */
+
+#plus-btn{
+    padding: 10px 15px;
+    align-self: center;
+    margin-left: auto; 
+
+    border: 1px solid #D2D2D2;
+    border-radius: 50%;
+    background-color: white;
+}
+#remove-btn{
+    border: none;
+    background-color: white;
+    font-size: 10px;
+    color: #D2D2D2;
+    padding: 0;    
+    margin-left: 10px;
+}
+#complete-btn{
+    color: white;
+    background-color:#16DB99;
+    border: none;
+    padding: 15px 0;
+    width: 100%;
+    margin-top: 25px; 
+    border-radius: 4px;
+}
