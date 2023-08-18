@@ -79,7 +79,8 @@ hr {
     display: flex;
     
 }
-#order-price {
+#order-price, 
+#total-price {
     margin-left: auto;
     align-self: center;
 }

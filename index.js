@@ -1,12 +1,7 @@
 import { menuArray } from './data.js'
+import { v4 as uuidv4 } from 'uuid'
 
-// const emoji = document.getElementById("emoji")
-// const title = document.getElementById("title")
-// const ingredients = document.getElementById("ingre")
-// const price = document.getElementById("price")
-
-let orderArray = []
-
+let totalPrice = 0
 
 document.addEventListener('click', (e) =>{
     if (e.target.dataset.item){
@@ -19,35 +14,52 @@ document.addEventListener('click', (e) =>{
 })
 
 function removeOrder(order){
-    const targetObj =  menuArray.filter((item)=> item.id == order)[0]
-    console.log(targetObj)
-    
 
-    const orderId = document.getElementById(targetObj.id)
-    orderId.innerHTML = ''
+    const orderId = document.getElementById(order)
+    const orderPrice = orderId.lastElementChild.textContent
+
+    orderId.remove()
+    console.log(orderId.lastElementChild.textContent)
+    removePrice(orderPrice)
         
-    // const orderItems = document.getElementById('order-item')
-    // orderItems.innerHTML = targetObj.name
-    
+
 }
 
 
 function addToOrder(order){
-    
+ 
   const targetObj =  menuArray.filter((item)=> item.id == order)[0]
      
-    let renderOrders = ''
 
-    renderOrders = `<div class="content-container" id=${targetObj.id}>
+    let renderOrders = ''
+     let uuId = uuidv4()
+
+    renderOrders = `<div class="content-container" id=${uuId}>
                     
                         <h3 id="title">${targetObj.name}</h3>
-                        <button id="remove-btn" data-remove=${targetObj.id}>remove</button>
-                        <h4 id="order-price">$ ${targetObj.price} </h4>
+                        <button id="remove-btn" data-remove=${uuId}>remove</button>
+                        <h4 id="order-price">${targetObj.price}</h4>
                     
                     </div>`
         
     const orderItems = document.getElementById('order-item')
     orderItems.innerHTML += renderOrders
+    addPrice(targetObj.price)
+}
+
+function addPrice(price){
+    totalPrice += price
+    
+    document.getElementById('total-price').textContent = `$ ${totalPrice}`
+}
+
+function removePrice(price){
+    
+        totalPrice = totalPrice - price
+
+        document.getElementById('total-price').textContent = `$ ${totalPrice}` 
+    
+
 }
 
 
