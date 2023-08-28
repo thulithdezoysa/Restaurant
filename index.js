@@ -3,9 +3,25 @@ import { v4 as uuidv4 } from 'uuid'
 
 let totalPrice = 0
 const customerInfo = document.getElementById('modal__customer-info')
+const backBtn = document.getElementById('back-btn')
+const modal = document.getElementById('modal')
 
+backBtn.addEventListener('click', function(e){
+    
+    modal.style.display = "none";
+    
+})
 customerInfo.addEventListener('submit', function(e){
+    
+
     e.preventDefault()
+    
+    const customerInfoData = new FormData(customerInfo)
+
+    const name = customerInfoData.get('customerName')
+    alert("Thanks, "+ name + " your Order is on it's way")
+    reset()
+    
 })
 
 document.addEventListener('click', (e) =>{
@@ -17,7 +33,7 @@ document.addEventListener('click', (e) =>{
         removeOrder(e.target.dataset.remove)
     }
     if (e.target.dataset.completeBtn){
-        alert("Order Complete")
+        modal.style.display = "flex";
     }
 })
 

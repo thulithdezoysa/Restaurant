@@ -1,12 +1,73 @@
-/* Defualt */
-body {
-    margin: 0;
-    font-family: Smythe, 'cursive';
-    
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
+
+/* Custom Properties */
+
+:root {
+    --ff-primary: 'Lora', serif;
+    --ff-secondary: 'Roboto Slab', serif;
+    
+    --fw-reg: 400;
+    --fw-bold: 700;
+    
+    --color-light: #fff;
+    --color-dark: #2b365e;
+    --color-accent:  #2f48a2; 
+    --color-accent2: #40B7E6;
+
+    
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+    
+    --br: 0.5em;
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+          0.125em 0.125em 0.25em rgba(0,0,0,.15);
+          
+    --fa-animation-duration: 1.5s;
+   --fa-beat-fade-scale: 1.0525;
+}
+
+@media (min-width: 800px) {
+    :root {
+        --fs-h1: 4.5rem;
+        --fs-h2: 3.75rem;
+        --fs-h3: 1.5rem;
+        --fs-body: 1.125rem;
+    }
+}
+
+/* General styles */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: var(--color-light);
+    color: var(--color-dark);
+    margin: 0;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    /* min-height: 400px; */
+
+}
+
+
+
+
+/* Defualt */
+
 button{
     cursor: pointer;
 }
+
 
 h1,h2,h3,h4{
     padding: 0;
@@ -17,33 +78,44 @@ section{
     
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 /* Layout */
 .modal{
 
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    position: fixed; 
+    z-index: 1; 
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    border: 1px solid black;
+    width: 100vw; 
+    height: 100vh; 
+
     
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0, 0, 0, 0.562); 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #modal__customer-info{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
     gap: 1em;
-    padding: 1em;
+    padding: 1em; 
 
     background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+
+    width: 50%; 
 
 }
 
@@ -121,6 +193,31 @@ hr {
 
 /* Buttons */
 
+.primary-btn{
+    color: white;
+    background-color:#16DB99;
+    border: none;
+    padding: 1em 0;
+    width: 100%;
+    margin-top: 2em; 
+    border-radius: 4px;
+}
+
+.secondary-btn{
+    color: white;
+    background-color:#db331675;
+    border: none;
+    padding: 1em 0;
+    width: 100%;
+    border-radius: 4px;
+}
+.modal__back-btn{
+    width: auto;
+    align-self: self-start;
+
+    padding: 1em 1.5em;
+}
+
 #plus-btn{
     padding: 10px 15px;
     align-self: center;
@@ -138,12 +235,4 @@ hr {
     padding: 0;    
     margin-left: 10px;
 }
-#complete-btn{
-    color: white;
-    background-color:#16DB99;
-    border: none;
-    padding: 15px 0;
-    width: 100%;
-    margin-top: 25px; 
-    border-radius: 4px;
-}
+
