@@ -178,6 +178,8 @@ header{
 .order-item-container{
 
     display: none;
+    align-items: center;
+    justify-content: center;
     position: fixed; 
     z-index: 2; 
     left: 0;
@@ -193,9 +195,13 @@ header{
     background-color: var(--color-light);
 
     padding: 3em;
-    height: 90vh;
+    height: 90%;
+    width: 80%;
+    max-width: 1000px;
     overflow: scroll;
     overflow-x: hidden;
+    top: 3em;
+    position: absolute;
 
  
 }
@@ -203,7 +209,7 @@ header{
     display: flex;
     flex-direction: column;
     justify-self: center;
-    gap:1em   
+    gap: 1em;   
 }
 .order-content-container{
     display: flex;

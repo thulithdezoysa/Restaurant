@@ -11,7 +11,7 @@ const orderItemContainer = document.getElementById("order-item-container")
 
 
 cart.addEventListener('click', function(){
-    orderItemContainer.style.display = "block";
+    orderItemContainer.style.display = "flex";
 })
 
 customerInfo.addEventListener('submit', function(e){
