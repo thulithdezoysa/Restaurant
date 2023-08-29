@@ -2,15 +2,18 @@ import { menuArray } from './data.js'
 import { v4 as uuidv4 } from 'uuid'
 
 let totalPrice = 0
+let counter = 0
 const customerInfo = document.getElementById('modal__customer-info')
-const backBtn = document.getElementById('back-btn')
-const modal = document.getElementById('modal')
 
-backBtn.addEventListener('click', function(e){
-    
-    modal.style.display = "none";
-    
+const modal = document.getElementById('modal')
+const cart = document.getElementById('cart')
+const orderItemContainer = document.getElementById("order-item-container")
+
+
+cart.addEventListener('click', function(){
+    orderItemContainer.style.display = "block";
 })
+
 customerInfo.addEventListener('submit', function(e){
     
 
@@ -19,8 +22,8 @@ customerInfo.addEventListener('submit', function(e){
     const customerInfoData = new FormData(customerInfo)
 
     const name = customerInfoData.get('customerName')
-    alert("Thanks, "+ name + " your Order is on it's way")
-    reset()
+    alert("Thanks you, "+ name + "! your Order was Successful")
+    modal.style.display = "none";
     
 })
 
@@ -35,6 +38,13 @@ document.addEventListener('click', (e) =>{
     if (e.target.dataset.completeBtn){
         modal.style.display = "flex";
     }
+    if(e.target.dataset.orderBackBtn){
+        orderItemContainer.style.display = "none";
+    }
+    if(e.target.dataset.payBackBtn){
+        modal.style.display = "none";
+    }
+        
 })
 
 renderItems()
@@ -55,36 +65,42 @@ function renderItems (){
 function getItemsFromData (){
     let renderHtml = ''
     menuArray.forEach((item) =>{
-      renderHtml +=   `<section class="menu-container">
+      renderHtml +=   `
                             <div class="content-container">
-                                <div id="emoji">${item.emoji}</div>
+                                <img id="emoji" src="${item.emoji}" alt="coffe image ${item.id}"/>
+                                
                                 <div class="text-container">
                                     <h3 id="title">${item.name}</h3>
                                     <p id="ingre">${item.ingredients}</p>
                                     <h4 id="price">$ ${item.price}</h4>
                                 </div>
-                                <button id="plus-btn" data-item=${item.id}>Add to order</button>
+                                <button class="secondary-btn" id="plus-btn" data-item=${item.id}>Add to order</button>
                             </div>
-                            <hr> 
-                        </section>`
+                            
+                        `
     })
               return renderHtml          
     
 }
 
+function orderCounter(){
+
+        cart.innerHTML =  `<i class="fa-solid fa-cart-shopping fa-2x"> <span class="counter">${counter}</span><i>`
+}
+
 function addToOrder(order){
 
- 
+    counter++
     const targetObj =  menuArray.filter((item)=> item.id == order)[0]
     let renderOrders = ''
     const uuId = uuidv4()
 
-    document.getElementById("order-item-container").style.display = "block";
+    
 
-    renderOrders = `<div class="content-container" id=${uuId}>
+    renderOrders = `<div class="order-content-container" id=${uuId}>
                     
-                        <h3 id="title">${targetObj.name}</h3>
-                        <button id="remove-btn" data-remove=${uuId}>remove</button>
+                        <h4 id="title">${targetObj.name}</h4>
+                        <button class="secondary-btn" id="remove-btn" data-remove=${uuId}>remove</button>
                         <h4 id="order-price">$ ${targetObj.price}</h4>
                     
                     </div>`
@@ -92,33 +108,37 @@ function addToOrder(order){
     const orderItems = document.getElementById('order-item')
     orderItems.innerHTML += renderOrders
     addPrice(targetObj.price)
+    orderCounter()
 }
 
 function removeOrder(order){
-    
+    counter--
     const orderId = document.getElementById(order)
     const orderPrice = orderId.lastElementChild.textContent.substr(2)
 
     orderId.remove()
-    removePrice(orderPrice)     
+    removePrice(orderPrice) 
+    orderCounter()   
 
 }
 
 function addPrice(price){
     totalPrice += price
     
-    document.getElementById('total-price').textContent = `$ ${totalPrice}`
+    document.getElementById('total-price').textContent = `$ ${Math.round(totalPrice * 100)/100}`
 }
 
 function removePrice(price){
     
     totalPrice = totalPrice - price
     
-    document.getElementById('total-price').textContent = `$ ${totalPrice}` 
+    document.getElementById('total-price').textContent = `$ ${Math.round(totalPrice* 100)/100}` 
     
     if (totalPrice == 0){
-        document.getElementById("order-item-container").style.display = "none";
+        orderItemContainer.style.display = "none";
     }
 }
+
+
 
 

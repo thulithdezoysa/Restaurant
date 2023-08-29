@@ -1,23 +1,45 @@
 export const menuArray = [
     {
-        name: "Pizza",
-        ingredients: ["pepperoni", "mushrom", "mozarella"],
+        name: "Latte",
+        ingredients: ["Milk", "Water", "Roasted Arabica Beans"],
         id: 0,
-        price: 14,
-        emoji: "🍕"
+        price: 3.99,
+        emoji: "./assets/latte-coffee.jpg"
     },
     {
-        name: "Hamburger",
-        ingredients: ["beef", "cheese", "lettuce"],
-        price: 12,
-        emoji: "🍔",
+        name: "Cappuccino",
+        ingredients: ["Milk", "Water", "Roasted Arabica", "Chocolate Powder"],
+        price: 4.49,
+        emoji: "./assets/cappuccino.jpg",
         id: 1
     },
         {
-        name: "Beer",
-        ingredients: ["grain, hops, yeast, water"],
-        price: 12,
-        emoji: "🍺",
+        name: "Espresso",
+        ingredients: [ "Water", "Roasted Arabica Coffee beans"],
+        price: 3.10,
+        emoji: "./assets/espresso.jpg",
         id: 2
-    }
+    },
+    {
+        name: "Mocha",
+        ingredients: ["Milk", "Water", "Chocolate Powder", "Roasted Arabica"],
+        price: 3.49,
+        emoji: "./assets/mocha.jpg",
+        id: 3
+    },
+    {
+        name: "Black Coffee",
+        ingredients: ["Water", "Ground coffee"],
+        price: 2.49,
+        emoji: "./assets/black-coffee.jpg",
+        id: 4
+    },
+    {
+        name: "Macchiato",
+        ingredients: ["Milk", "Water",  "Roasted Arabica"],
+        price: 3.49,
+        emoji: "./assets/macchiato.jpg",
+        id: 5
+    },
+    
 ]
